@@ -1,0 +1,16 @@
+{
+    "$schema": "https://raw.githubusercontent.com/vanessa-opensource/vanessa-runner/develop/vanessa-runner-schema.json",
+    "default": {
+        "--ibconnection": "/F./build/ibservice",
+        "--db-user": "Администратор",
+        "--v8version": "8.3.16.1148"
+    },
+    "xunit": {
+        "testsPath": "./tests",
+        "--reportsxunit": "ГенераторОтчетаJUnitXML{build/junit/junit.xml};ГенераторОтчетаAllureXMLВерсия2{build/allure/allure.xml}"
+    },
+    "compileext": {
+        "inputPath": "./src",
+        "extensionName": "ПримерHTTPСервиса"
+    }
+}

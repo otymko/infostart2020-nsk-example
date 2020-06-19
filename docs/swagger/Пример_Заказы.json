@@ -1,0 +1,191 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Используется для управления заказами с интернет-магазина",
+        "version": "v1",
+        "title": "Пример_Заказы",
+        "termsOfService": "",
+        "contact": "",
+        "license": ""
+    },
+    "host": "",
+    "basePath": "/order_api",
+    "tags": [
+        {
+            "name": "Заказ",
+            "description": "",
+            "externalDocs": ""
+        },
+        {
+            "name": "Заказ по идентификатору",
+            "description": "",
+            "externalDocs": ""
+        },
+        {
+            "name": "Заказы",
+            "description": "",
+            "externalDocs": ""
+        }
+    ],
+    "schemes": [],
+    "paths": {
+        "/v1/order": {
+            "post": {
+                "tags": [
+                    "Заказ"
+                ],
+                "summary": "Создать заказ",
+                "description": "Создает заказ на основе входящих данных\n(Обработчик метода POST /v1/order)",
+                "operationId": "",
+                "consumes": [],
+                "produces": [
+                    "plain/text"
+                ],
+                "parameters": "",
+                "responses": {
+                    "200": {
+                        "description": "запрос выполнен."
+                    },
+                    "500": {
+                        "description": "внутренняя ошибка."
+                    }
+                },
+                "security": ""
+            }
+        },
+        "/v1/order/{id}": {
+            "get": {
+                "tags": [
+                    "Заказ по идентификатору"
+                ],
+                "summary": "Получить заказ",
+                "description": "Возвращает заказ по идентификатору\n(Обработчик метода GET /v1/order/{id})",
+                "operationId": "",
+                "consumes": [],
+                "produces": [
+                    "plain/text"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "идентификатор заказа",
+                        "required": true,
+                        "type": "string",
+                        "format": "",
+                        "enum": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "запрос выполнен."
+                    },
+                    "404": {
+                        "description": "заказ по идентификатору не найден."
+                    },
+                    "500": {
+                        "description": "внутренняя ошибка."
+                    }
+                },
+                "security": ""
+            },
+            "put": {
+                "tags": [
+                    "Заказ по идентификатору"
+                ],
+                "summary": "Изменить заказ",
+                "description": "Изменяет заказ по идентификатору\n(Обработчик метода PUT /v1/order/{id})",
+                "operationId": "",
+                "consumes": [],
+                "produces": [
+                    "plain/text"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "идентификатор заказа",
+                        "required": true,
+                        "type": "string",
+                        "format": "",
+                        "enum": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "запрос выполнен."
+                    },
+                    "404": {
+                        "description": "заказ по идентификатору не найден."
+                    },
+                    "500": {
+                        "description": "внутренняя ошибка."
+                    }
+                },
+                "security": ""
+            },
+            "delete": {
+                "tags": [
+                    "Заказ по идентификатору"
+                ],
+                "summary": "Удалить заказ",
+                "description": "Удаляет заказ по идентификатору\n(Обработчик метода DELETE /v1/order/{id})",
+                "operationId": "",
+                "consumes": [],
+                "produces": [
+                    "plain/text"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "идентификатор заказа",
+                        "required": true,
+                        "type": "string",
+                        "format": "",
+                        "enum": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "запрос выполнен."
+                    },
+                    "404": {
+                        "description": "заказ по идентификатору не найден."
+                    },
+                    "500": {
+                        "description": "внутренняя ошибка."
+                    }
+                },
+                "security": ""
+            }
+        },
+        "/v1/order/list": {
+            "get": {
+                "tags": [
+                    "Заказы"
+                ],
+                "summary": "Получить список заказов",
+                "description": "Возвращает список заказов \n(Обработчик метода GET /v1/order/list)",
+                "operationId": "",
+                "consumes": [],
+                "produces": [
+                    "plain/text"
+                ],
+                "parameters": "",
+                "responses": {
+                    "200": {
+                        "description": "запрос выполнен."
+                    },
+                    "500": {
+                        "description": "внутренняя ошибка."
+                    }
+                },
+                "security": ""
+            }
+        }
+    },
+    "securityDefinitions": "",
+    "definitions": "",
+    "externalDocs": ""
+}
