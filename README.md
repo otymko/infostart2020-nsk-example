@@ -17,7 +17,7 @@
     * Vanessa ADD (https://github.com/vanessa-opensource/add)
         * Выполнить команду в консоли: ```opm install add```
     * AutodocGen (https://github.com/bia-tech/autodocgen)
-        * Выполнить команду в консоли: ```opm install add```
+        * Выполнить команду в консоли: ```opm install autodocgen```
     * Swagger (https://github.com/botokash/swagger)
         * Выполнить команду в консоли: ```opm install swagger```
 * NodeJS (https://nodejs.org/en/download/)
@@ -27,7 +27,7 @@
 ## Создание Pipeline в Jenkins
 
 1. Добавляем новый item c видом `Pipeline`
-2. В настройках заполняем поле с Pipeline с примером ниже (Jenkinsfile) или выбираем взять из SCM. Если выбрано втрое указываем адрес текущего репозитория.
+2. В настройках заполняем поле с Pipeline с примером ниже (Jenkinsfile) или выбираем взять из SCM. Если выбрано второе указываем адрес текущего репозитория.
 3. Если какие то действия не нужны - комментируем.
 4. Перед запуском проверяем что все установлено из раздела "Подготовка окружения" выше.
 
