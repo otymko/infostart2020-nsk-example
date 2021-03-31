@@ -1,3 +1,4 @@
 ConfigDumpInfo.xml
 # build/*
 !build/.gitkeep
+build/autodoc/*

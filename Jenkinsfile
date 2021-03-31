@@ -3,13 +3,14 @@
 node {
     
     def scannerHome = tool name: 'sonar-scanner'
+    def pathToDT = 'd://cicd//dt//base.dt'
     
     stage('Актуализация проекта GIT') {
         git branch: 'master', credentialsId: '3363631f-fba0-4996-a8fb-b4fadd8dcda1', url: 'https://github.com/otymko/infostart2020-nsk-example.git' 
     }
     
     stage('Подготовка окружения') {
-        cmd("@call vrunner init-dev --dt ‪build/dt/base.dt --settings ./vb-params.json")
+        cmd("@call vrunner init-dev --dt ${pathToDT} --settings ./vb-params.json")
         cmd("@call vrunner compileext --settings ./vb-params.json --updatedb")
     }
     
@@ -24,7 +25,7 @@ node {
     }
     
     stage('Генерация Swagger API') {
-        cmd('@call swagger generate --src-path src --out build/swagger --format json')
+        cmd('@call swagger generate --src-path src/configuration --out build/swagger --format json')
         cmd('@call bootprint openapi build/swagger/Пример_Заказы.json build/swagger')
         publishHTML (target : [allowMissing: false,
              alwaysLinkToLastBuild: true,
@@ -36,7 +37,7 @@ node {
     }
     
     stage('Генерация AutodocGen') {
-        cmd('@call autodocgen generate -c autodocgen-properties.json -f html src')
+        cmd('@call autodocgen generate -c autodocgen-properties.json -f html .')
         publishHTML (target : [allowMissing: false,
              alwaysLinkToLastBuild: true,
              keepAll: true,

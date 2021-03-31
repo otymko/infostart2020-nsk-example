@@ -16,10 +16,10 @@
         * Выполнить команду в консоли: ```opm install vanessa-runner```
     * Vanessa ADD (https://github.com/vanessa-opensource/add)
         * Выполнить команду в консоли: ```opm install add```
-    * AutodocGen (https://github.com/bia-tech/autodocgen)
-        * Выполнить команду в консоли: ```opm install autodocgen```
+    * AutodocGen (https://github.com/bia-technologies/autodocgen)
+        * Выполнить команду в консоли: ```opm install autodocgen@1.2.1```
     * Swagger (https://github.com/botokash/swagger)
-        * Выполнить команду в консоли: ```opm install swagger```
+        * Выполнить команду в консоли: ```opm install swagger@0.4.1```
 * NodeJS (https://nodejs.org/en/download/)
 * Пакет bootprint-openapi (https://github.com/bootprint/bootprint-openapi)
     * Выполнить команду в консоли: ```npm install -g bootprint``` и ```npm install -g bootprint-openapi```
@@ -43,14 +43,18 @@
 node {
     
     def scannerHome = tool name: 'sonar-scanner'
+    // есть разные способы, один из них хранить dt в отдельном каталоге на узле
+    // более правильный - скачивать dt файл из "облака"
+    def pathToDT = 'build/dt/base.dt' 
     
+    // более правильный способ - pipeline script from SCM
     stage('Актуализация проекта GIT') {
         git branch: 'master', url: 'https://github.com/otymko/infostart2020-nsk-example.git' 
     }
     
     // Комментируем если тестирование не нужно
     stage('Подготовка окружения') {
-        cmd("@call vrunner init-dev --dt ‪build/dt/base.dt --settings ./vb-params.json")
+        cmd("@call vrunner init-dev --dt ${pathToDT} --settings ./vb-params.json")
         cmd("@call vrunner compileext --settings ./vb-params.json --updatedb")
     }
     
@@ -68,7 +72,7 @@ node {
     
     // Комментируем если документация Swagger не нужна
     stage('Генерация Swagger API') {
-        cmd('@call swagger generate --src-path src --out build/swagger --format json')
+        cmd('@call swagger generate --src-path src/configuration --out build/swagger --format json')
         cmd('@call bootprint openapi build/swagger/Пример_Заказы.json build/swagger')
         publishHTML (target : [allowMissing: false,
              alwaysLinkToLastBuild: true,
@@ -81,7 +85,7 @@ node {
     
     // Комментируем если документация Autodocgen не нужна
     stage('Генерация AutodocGen') {
-        cmd('@call autodocgen generate -c autodocgen-properties.json -f html src')
+        cmd('@call autodocgen generate -c autodocgen-properties.json -f html .')
         publishHTML (target : [allowMissing: false,
              alwaysLinkToLastBuild: true,
              keepAll: true,
